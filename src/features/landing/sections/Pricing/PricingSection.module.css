@@ -1,0 +1,362 @@
+.pricing {
+  position: relative;
+  overflow-x: clip;
+  /* Features cards end ~y1672; Pricing card y1752 → ~80px */
+  padding-block-start: clamp(2.5rem, 1.75rem + 2vw, 5rem);
+  padding-block-end: clamp(2.5rem, 1.75rem + 2.5vw, 5rem);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 65.625rem; /* 1050px */
+  margin-inline: auto;
+  padding: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem); /* → 36px */
+  border: 0.945px solid rgba(252, 252, 252, 0.3);
+  border-radius: 1.4765625rem; /* 23.625px */
+  background-color: rgba(2, 1, 1, 0.55);
+  box-shadow: inset 0 0 9.45px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: linear-gradient(
+    158.93deg,
+    rgba(221, 9, 18, 0.2) 0%,
+    rgba(255, 19, 19, 0.02) 53.876%
+  );
+  backdrop-filter: blur(70.875px);
+}
+
+.header,
+.specs,
+.amountField,
+.sliderBlock,
+.results,
+.cta {
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+}
+
+.planTitle {
+  margin: 0;
+  max-width: 24.75rem;
+  font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2.25rem); /* → 36 */
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+  color: #fefefe;
+}
+
+.returnBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  max-width: 24.75rem;
+}
+
+.returnRate {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2.25rem); /* 36 */
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+  color: var(--color-red-primary);
+}
+
+.returnNote {
+  margin: 0.625rem 0 0; /* ~10px under rate (93-40-43) */
+  font-size: clamp(0.875rem, 0.75rem + 0.4vw, 1.375rem); /* → 22 */
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  color: #a9a9a9;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem; /* 69px row pitch − ~39 content ≈ 30; Figma rows at +69 */
+  margin: clamp(2.5rem, 2rem + 2.5vw, 7.625rem) 0 0; /* → ~122px from header */
+  padding: 0;
+}
+
+.specRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 0.75rem;
+  margin: 0;
+  padding-block-end: 0.625rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.specLabel {
+  margin: 0;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.5rem); /* 24 */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-red-primary);
+}
+
+.specValue {
+  margin: 0;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.5rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.amountField {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin-block-start: clamp(1.5rem, 1.2rem + 1vw, 2.5rem); /* ~40px */
+  width: 100%;
+}
+
+.amountLabel {
+  font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.25rem); /* 20 */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.amountInput {
+  width: 100%;
+  height: 3.125rem; /* 50px */
+  padding: 0 1.4375rem; /* ~23px */
+  border: 0.945px solid rgba(252, 252, 252, 0.3);
+  border-radius: 0.5625rem; /* 9px */
+  background: rgba(128, 128, 128, 0.4);
+  box-shadow: inset 0 0 9.45px 3.78px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(70.875px);
+  font-family: var(--font-family-primary);
+  font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.25rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  outline: none;
+}
+
+.amountInput:focus-visible {
+  border-color: rgba(221, 9, 18, 0.7);
+  box-shadow:
+    inset 0 0 9.45px 3.78px rgba(0, 0, 0, 0.25),
+    0 0 0 2px var(--color-focus-ring);
+}
+
+.sliderBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-block-start: clamp(1.75rem, 1.25rem + 1.5vw, 3.125rem);
+}
+
+.sliderTrackWrap {
+  position: relative;
+  width: 100%;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  --slider-progress: 24.14%;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.3125rem; /* ~5px track */
+  margin: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-red-primary) 0%,
+    var(--color-red-primary) var(--slider-progress),
+    rgba(119, 5, 10, 0.45) var(--slider-progress),
+    rgba(119, 5, 10, 0.45) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--slider-thumb) center / 2.5rem 2.5rem no-repeat;
+  background-color: transparent;
+  cursor: grab;
+}
+
+.slider::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-red-primary);
+  box-shadow: 0 2px 15px rgba(255, 209, 0, 0.2);
+  cursor: grab;
+}
+
+.slider::-moz-range-track {
+  height: 0.3125rem;
+  border-radius: 999px;
+  background: rgba(119, 5, 10, 0.45);
+}
+
+.slider:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 6px;
+}
+
+.sliderScale {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-block-start: 0.5rem;
+  min-height: 1.8125rem;
+}
+
+.scaleEdge,
+.scaleCurrent {
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.5rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-red-primary);
+}
+
+.scaleCurrent {
+  position: absolute;
+  top: 0;
+  left: var(--slider-progress, 0%);
+  translate: -50% 0;
+}
+
+.disclaimer {
+  margin: clamp(1rem, 0.75rem + 0.8vw, 1.5rem) 0 0;
+  font-size: clamp(0.875rem, 0.75rem + 0.4vw, 1.375rem); /* 22 */
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: #a9a9a9;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 0.5rem + 1.5vw, 4rem); /* → 64px between result cards */
+  margin-block-start: clamp(1.25rem, 1rem + 1vw, 2rem);
+  width: 100%;
+}
+
+.resultCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 5rem; /* 80px */
+  padding: 0.75rem 1rem;
+  border: 1.5px solid rgba(221, 9, 18, 0.7);
+  border-radius: 0.5625rem;
+  backdrop-filter: blur(70.875px);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.resultLabel {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  color: #a9a9a9;
+  text-align: center;
+}
+
+.resultValue {
+  margin: 0;
+  font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem); /* 24 */
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--color-red-primary);
+  text-align: center;
+}
+
+.cta {
+  margin-block-start: clamp(1.25rem, 1rem + 1vw, 1.875rem); /* ~30px */
+  min-height: 3.75rem !important; /* 60px */
+  border-radius: 0.5625rem !important;
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.5rem) !important;
+  font-weight: var(--font-weight-bold) !important;
+  box-shadow: inset 0 0 9.45px 3.78px rgba(0, 0, 0, 0.25) !important;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .returnBlock {
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  .results {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .results {
+    grid-template-columns: 1fr;
+  }
+
+  .disclaimer {
+    text-wrap: balance;
+  }
+
+  .planTitle {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none !important;
+  }
+}
