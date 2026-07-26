@@ -77,8 +77,10 @@
 .icon {
   position: absolute;
   display: block;
+  /* Assets are 2× Figma exports — scale into 1× frame box (never crop) */
   max-width: none;
-  object-fit: none;
+  object-fit: fill;
+  object-position: center;
   pointer-events: none;
 }
 

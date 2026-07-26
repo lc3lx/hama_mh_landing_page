@@ -2,8 +2,8 @@
   position: relative;
   overflow-x: clip;
   background: var(--color-footer-bg);
-  /* Figma 385:1415 — content starts at y49 within 414 frame */
-  padding-block: 3.0625rem 2.75rem; /* 49px / ~44px below copyright */
+  /* Figma 385:1415 — content y49, frame h414, copyright ends ~370 → pad-bottom 44 */
+  padding-block: 3.0625rem 2.75rem; /* 49px / 44px */
   isolation: isolate;
 }
 
@@ -13,18 +13,18 @@
   pointer-events: none;
   /* Figma 385:1470 — 1282.5 × 192.38, blur 125, top overhang */
   inset-inline-start: 50%;
-  top: -6rem;
+  top: -5.9945rem; /* -95.91 */
   width: min(80.15625rem, 120%);
   height: 12.02375rem;
   translate: -50% 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    var(--color-red-primary) 0%,
-    rgba(221, 9, 18, 0) 70%
+  border-radius: 80.15625rem;
+  background: linear-gradient(
+    to top,
+    rgba(221, 9, 18, 0) 20%,
+    var(--color-red-primary) 100%
   );
   filter: blur(7.8125rem); /* 125px */
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .topBorder {
@@ -48,7 +48,18 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* content → divider ≈ (302 - 49 - 221) ≈ 32; + visual breathing */
+  gap: 0;
+  width: 100%;
+  /* Outer shell mirrors Container full + gutter; band stays 1152px */
+  max-width: var(--layout-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-inline-gutter);
+  box-sizing: border-box;
+}
+
+.band {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 72rem; /* 1152px Figma content band */
   margin-inline: auto;
@@ -61,13 +72,17 @@
   justify-content: space-between;
   gap: clamp(2rem, 4vw, 10rem);
   min-height: 13.8125rem; /* 221px */
+  /* Content bottom → disclaimer block ≈ 32px */
+  margin-block-end: 2rem;
 }
 
 .brand {
   display: flex;
   flex-direction: column;
   gap: 0.625rem; /* 10px */
-  max-width: 26.8125rem; /* 429px */
+  /* Figma brand column width — keeps menus at x≈841 */
+  width: min(100%, 26.8125rem); /* 429px */
+  max-width: 26.8125rem;
 }
 
 .logoLink {
@@ -80,7 +95,7 @@
 .logo {
   display: block;
   width: 8.875rem; /* 142px */
-  height: auto;
+  height: 3.8125rem; /* 61px — matches Header export; Figma leaf 60.46 */
   aspect-ratio: 142 / 61;
 }
 
@@ -107,13 +122,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3rem; /* 48px */
-  max-width: 28.5rem; /* 456px */
+  width: 28.5rem; /* 456px */
+  max-width: 100%;
 }
 
 .group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.5rem; /* ~8px title → first link */
   width: 7.5rem; /* 120px */
   min-width: 7.5rem;
 }
@@ -130,13 +146,22 @@
 .linkList {
   display: flex;
   flex-direction: column;
-  gap: 0.949625rem; /* 15.194px */
+  /* Additional / Follow Us — Figma gap 15.194 → top-to-top ≈ 38.2 with 23px rows */
+  gap: 0.949625rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* General column — Figma absolute rhythm 31px top-to-top */
+.linkListDense {
+  gap: 0.5rem; /* 8px + 23px row ≈ 31 */
+}
+
 .link {
+  display: flex;
+  align-items: center;
+  height: 1.4375rem; /* 23px Figma text frame */
   font-family: var(--font-family-primary);
   font-size: 0.85rem; /* 13.6px */
   font-weight: var(--font-weight-regular);
@@ -147,6 +172,16 @@
 
 .link:hover {
   color: var(--color-text-primary);
+}
+
+/* Figma 385:1429 — 18px band with 1px rule centered */
+.dividerWrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 1.125rem; /* 18px */
+  /* Group end → copyright ≈ 25px */
+  margin-block-end: 1.5625rem;
 }
 
 .divider {
@@ -174,9 +209,14 @@
     min-height: 0;
   }
 
-  .menus {
-    max-width: none;
+  .brand {
     width: 100%;
+    max-width: 26.8125rem;
+  }
+
+  .menus {
+    width: 100%;
+    max-width: none;
     justify-content: flex-start;
     gap: clamp(1.5rem, 4vw, 3rem);
   }
@@ -205,6 +245,11 @@
 }
 
 @media (max-width: 430px) {
+  .inner {
+    padding-inline: max(1rem, env(safe-area-inset-left))
+      max(1rem, env(safe-area-inset-right));
+  }
+
   .menus {
     grid-template-columns: 1fr;
   }
