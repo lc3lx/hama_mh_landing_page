@@ -37,10 +37,17 @@ export function PricingSection() {
   const amount = parseAmountInput(amountInput);
   const profit = estimateProfit(amount, days);
   const total = amount + profit;
-  const progress = ((days - MIN_DAYS) / (MAX_DAYS - MIN_DAYS)) * 100;
+  const progressRatio = (days - MIN_DAYS) / (MAX_DAYS - MIN_DAYS);
+  const progress = Math.min(100, Math.max(0, progressRatio * 100));
+
+  const setDaysFromEvent = (raw: string) => {
+    const next = Number(raw);
+    if (!Number.isFinite(next)) return;
+    setDays(Math.min(MAX_DAYS, Math.max(MIN_DAYS, Math.round(next))));
+  };
 
   const sliderVars = {
-    '--slider-progress': `${progress}%`,
+    '--slider-progress': progress,
   } as CSSProperties;
 
   return (
@@ -111,6 +118,9 @@ export function PricingSection() {
             Duration in days
           </label>
           <div className={styles.sliderTrackWrap}>
+            <div className={styles.sliderTrack} aria-hidden="true">
+              <div className={styles.sliderFill} />
+            </div>
             <input
               id={daysId}
               className={styles.slider}
@@ -119,7 +129,8 @@ export function PricingSection() {
               max={MAX_DAYS}
               step={1}
               value={days}
-              onChange={(event) => setDays(Number(event.target.value))}
+              onInput={(event) => setDaysFromEvent(event.currentTarget.value)}
+              onChange={(event) => setDaysFromEvent(event.currentTarget.value)}
               aria-valuemin={MIN_DAYS}
               aria-valuemax={MAX_DAYS}
               aria-valuenow={days}
