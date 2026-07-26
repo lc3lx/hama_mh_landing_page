@@ -14,7 +14,6 @@ import {
   MIN_DAYS,
   PRICING_COPY,
   PRICING_SPECS,
-  pricingAssets,
 } from '../../data/pricing';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
 import styles from './PricingSection.module.css';
@@ -42,7 +41,6 @@ export function PricingSection() {
 
   const sliderVars = {
     '--slider-progress': `${progress}%`,
-    '--slider-thumb': `url(${pricingAssets.sliderThumb})`,
   } as CSSProperties;
 
   return (
