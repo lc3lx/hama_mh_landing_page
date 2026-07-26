@@ -4,9 +4,9 @@ import { Card } from '@components/molecules/Card';
 import { SectionTitle } from '@components/molecules/SectionTitle';
 import { SectionContainer } from '@components/organisms/SectionContainer';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
+import { useI18n } from '@i18n';
 import {
   STATISTICS_CHART,
-  STATISTICS_COPY,
   STATISTICS_METRICS,
   STATISTICS_TRADES,
 } from '../../data/statistics';
@@ -21,11 +21,9 @@ const TONE_CLASS = {
 
 /**
  * Statistics — Figma 55:266 (title) + 55:274 (metrics) + 491:1487 (chart) + 55:299 (trades)
- *
- * Demo metrics/trades are intentional Figma preview data (typed source).
- * Chart asset is swappable via STATISTICS_CHART without layout redesign.
  */
 export function StatisticsSection() {
+  const { t } = useI18n();
   const hasMetrics = STATISTICS_METRICS.length > 0;
   const hasTrades = STATISTICS_TRADES.items.length > 0;
   const hasChart = Boolean(STATISTICS_CHART.src);
@@ -45,63 +43,52 @@ export function StatisticsSection() {
         className={`${styles.heading} motionSlideUp`}
         align="center"
         titleAs="h2"
-        eyebrow={STATISTICS_COPY.eyebrow}
-        title={
-          <span id="statistics-heading">{STATISTICS_COPY.title}</span>
-        }
+        eyebrow={t.statistics.eyebrow}
+        title={<span id="statistics-heading">{t.statistics.title}</span>}
       />
 
       {hasMetrics ? (
         <ul
-          className={`${styles.metrics} motionFadeIn`}
+          className={`${styles.metrics} motionFadeIn motionStaggerChildren`}
           data-figma-node={FIGMA_LANDING_NODES.statisticsMetrics}
         >
-          {STATISTICS_METRICS.map((metric) => (
-            <li key={metric.id} className={styles.metricItem}>
-              <Card
-                as="article"
-                variant="flat"
-                padding="none"
-                className={styles.metricCard}
-                data-figma-node={metric.figmaNodeId}
-                aria-label={`${metric.label}: ${metric.value}`}
-              >
-                <p className={styles.metricLabel}>{metric.label}</p>
-                <p className={`${styles.metricValue} ${TONE_CLASS[metric.tone]}`}>
-                  {metric.value || '—'}
-                </p>
-              </Card>
-            </li>
-          ))}
+          {STATISTICS_METRICS.map((metric) => {
+            const label = t.statistics.metrics[metric.id as keyof typeof t.statistics.metrics];
+            return (
+              <li key={metric.id} className={styles.metricItem}>
+                <Card
+                  as="article"
+                  variant="flat"
+                  padding="none"
+                  className={styles.metricCard}
+                  data-figma-node={metric.figmaNodeId}
+                  aria-label={`${label}: ${metric.value}`}
+                >
+                  <p className={styles.metricLabel}>{label}</p>
+                  <p className={`${styles.metricValue} ${TONE_CLASS[metric.tone]}`}>
+                    {metric.value || '—'}
+                  </p>
+                </Card>
+              </li>
+            );
+          })}
         </ul>
-      ) : (
-        <p className={styles.empty} role="status">
-          No metrics available
-        </p>
-      )}
+      ) : null}
 
       <div className={`${styles.panels} motionFadeIn`}>
         {hasChart ? (
-          <figure
-            className={styles.chart}
-            data-figma-node={STATISTICS_CHART.figmaNodeId}
-          >
-            {/* Chart slot: replace <img> with a dynamic chart later via STATISTICS_CHART */}
+          <figure className={styles.chart} data-figma-node={STATISTICS_CHART.figmaNodeId}>
             <img
               className={styles.chartImage}
               src={STATISTICS_CHART.src}
-              alt={STATISTICS_CHART.alt}
+              alt={t.statistics.chartAlt}
               width={STATISTICS_CHART.width}
               height={STATISTICS_CHART.height}
               decoding="async"
               loading="lazy"
             />
           </figure>
-        ) : (
-          <p className={styles.empty} role="status">
-            Chart unavailable
-          </p>
-        )}
+        ) : null}
 
         <Card
           as="article"
@@ -109,10 +96,10 @@ export function StatisticsSection() {
           padding="none"
           className={styles.trades}
           data-figma-node={STATISTICS_TRADES.figmaNodeId}
-          aria-label={STATISTICS_TRADES.title}
+          aria-label={t.statistics.tradesTitle}
         >
           <Text as="h3" variant="title" tone="heading" className={styles.tradesTitle}>
-            {STATISTICS_TRADES.title}
+            {t.statistics.tradesTitle}
           </Text>
 
           {hasTrades ? (
@@ -124,7 +111,13 @@ export function StatisticsSection() {
                     <span className={styles.tradeSep} aria-hidden="true">
                       •
                     </span>
-                    <span>{trade.strategy || '—'}</span>
+                    <span>
+                      {
+                        t.statistics.tradeStrategies[
+                          trade.id as keyof typeof t.statistics.tradeStrategies
+                        ]
+                      }
+                    </span>
                     <span className={styles.tradeSep} aria-hidden="true">
                       •
                     </span>
@@ -133,19 +126,13 @@ export function StatisticsSection() {
                 </li>
               ))}
             </ul>
-          ) : (
-            <p className={styles.empty} role="status">
-              No recent trades
-            </p>
-          )}
-
-          {STATISTICS_TRADES.status ? (
-            <div className={styles.status}>
-              <Badge variant="soft" className={styles.statusBadge}>
-                {STATISTICS_TRADES.status}
-              </Badge>
-            </div>
           ) : null}
+
+          <div className={styles.status}>
+            <Badge variant="soft" className={styles.statusBadge}>
+              {t.statistics.tradesStatus}
+            </Badge>
+          </div>
         </Card>
       </div>
     </SectionContainer>

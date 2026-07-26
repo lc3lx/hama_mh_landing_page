@@ -1,5 +1,8 @@
 import { PageShell } from '@components/layouts';
+import { ScrollToTop } from '@components/atoms/ScrollToTop';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
+import { useScrollReveal } from '@hooks/useScrollMotion';
+import { useI18n } from '@i18n';
 import { DocumentHead } from '@seo';
 import { cn } from '@utils/cn';
 import { HeaderSection } from './sections/Header';
@@ -17,13 +20,30 @@ import type { LandingFeatureProps } from './types';
 import styles from './LandingFeature.module.css';
 
 /**
- * Landing feature entry.
- * Sections mount one at a time (Phase 4 approvals).
+ * Landing feature entry — full page with scroll reveal + back-to-top.
  */
 export function LandingFeature({ className }: LandingFeatureProps) {
+  useScrollReveal();
+  const { t, locale } = useI18n();
+
   return (
     <>
-      <DocumentHead />
+      <DocumentHead
+        key={locale}
+        seo={{
+          title: t.seo.title,
+          description: t.seo.description,
+          openGraph: {
+            title: t.seo.title,
+            description: t.seo.description,
+            siteName: t.seo.title,
+          },
+          twitter: {
+            title: t.seo.title,
+            description: t.seo.description,
+          },
+        }}
+      />
       <PageShell
         className={cn(styles.root, className)}
         data-figma-node={FIGMA_LANDING_NODES.desktopRoot}
@@ -40,6 +60,7 @@ export function LandingFeature({ className }: LandingFeatureProps) {
         <SecuritySection />
         <FooterSection />
       </PageShell>
+      <ScrollToTop />
     </>
   );
 }

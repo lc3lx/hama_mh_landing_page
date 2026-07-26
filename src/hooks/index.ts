@@ -6,3 +6,4 @@ export {
   useIsDesktopUp,
   useIsDesktopLgUp,
 } from './useBreakpoint';
+export { useScrollReveal, useShowOnScroll } from './useScrollMotion';

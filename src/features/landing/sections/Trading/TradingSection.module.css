@@ -28,8 +28,8 @@
 }
 
 .copy :global([class*='title']) {
-  /* Figma 55:228 — leading matches font size */
-  line-height: 1;
+  /* Multi-line heading — was 1 (too tight) */
+  line-height: 1.25;
   max-width: 40.763rem;
 }
 
@@ -37,7 +37,7 @@
   margin-top: 1.5267rem; /* 24.427px */
   max-width: 40.763rem;
   font-size: clamp(1rem, 0.85rem + 0.58vw, 1.374rem); /* → 21.985 @1440 */
-  line-height: 1.778; /* 39.084 / 21.985 */
+  line-height: 1.95;
   color: var(--color-text-body);
   white-space: normal;
 }
@@ -85,8 +85,8 @@
   }
 
   .panel {
-    height: 28.0305rem; /* 448.489px — Figma card frame */
-    min-height: 28.0305rem;
+    height: auto;
+    min-height: 28.0305rem; /* 448.489px — Figma card frame */
   }
 
   .binolla,
@@ -191,7 +191,7 @@
 .rows {
   display: flex;
   flex-direction: column;
-  gap: 1.221375rem; /* 19.542px between rows */
+  gap: 1.5rem; /* was 19.542px — more space between signal rows */
   width: 100%;
   margin: 0;
   margin-block-start: 1.8315rem; /* 29.313px before first row */
@@ -212,7 +212,7 @@
 .rowValue {
   margin: 0;
   font-size: clamp(0.9375rem, 0.88rem + 0.22vw, 1.0687rem); /* → 17.099 @1440 */
-  line-height: 1.428; /* 24.427 / 17.099 */
+  line-height: 1.6;
   font-weight: var(--font-weight-regular);
 }
 

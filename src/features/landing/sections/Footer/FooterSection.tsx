@@ -1,7 +1,8 @@
 import { SectionContainer } from '@components/organisms/SectionContainer';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
+import { useI18n } from '@i18n';
 import {
-  FOOTER_COPY,
+  FOOTER_COMPANY_HREF,
   FOOTER_LOGO,
   FOOTER_NAV_GROUPS,
   FOOTER_PRIVACY_HREF,
@@ -13,6 +14,8 @@ import styles from './FooterSection.module.css';
  * Footer — Figma 385:1415 (logo, nav groups, disclaimer, copyright, glow)
  */
 export function FooterSection() {
+  const { t } = useI18n();
+
   return (
     <SectionContainer
       as="footer"
@@ -34,7 +37,7 @@ export function FooterSection() {
               <a
                 className={styles.logoLink}
                 href={`#${LANDING_SECTION_IDS.hero}`}
-                aria-label={FOOTER_COPY.logoAlt}
+                aria-label={t.footer.logoAlt}
               >
                 <img
                   className={styles.logo}
@@ -47,18 +50,19 @@ export function FooterSection() {
                 />
               </a>
               <p className={styles.disclaimer}>
-                {FOOTER_COPY.disclaimerBefore}
+                {t.footer.disclaimerBefore}
                 <a className={styles.disclaimerLink} href={FOOTER_PRIVACY_HREF}>
-                  {FOOTER_COPY.disclaimerLinkLabel}
+                  {t.footer.disclaimerLinkLabel}
                 </a>
-                {FOOTER_COPY.disclaimerAfter}
+                {t.footer.disclaimerAfter}
               </p>
             </div>
 
-            <nav className={styles.menus} aria-label="Footer" data-figma-node="385:1448">
+            <nav className={styles.menus} aria-label={t.a11y.footerNav} data-figma-node="385:1448">
               {FOOTER_NAV_GROUPS.map((group) => {
                 const titleId = `footer-${group.id}-heading`;
                 const dense = group.id === 'general';
+                const groupCopy = t.footer.groups[group.id as keyof typeof t.footer.groups];
                 return (
                   <div
                     key={group.id}
@@ -66,7 +70,7 @@ export function FooterSection() {
                     data-figma-node={group.figmaNodeId}
                   >
                     <p className={styles.groupTitle} id={titleId}>
-                      {group.title}
+                      {groupCopy.title}
                     </p>
                     <ul
                       className={`${styles.linkList} ${dense ? styles.linkListDense : ''}`}
@@ -84,7 +88,7 @@ export function FooterSection() {
                                 }
                               : {})}
                           >
-                            {link.label}
+                            {groupCopy.links[link.id] ?? link.label}
                           </a>
                         </li>
                       ))}
@@ -100,7 +104,15 @@ export function FooterSection() {
           </div>
 
           <p className={styles.copyright} data-figma-node="55:514">
-            {FOOTER_COPY.copyright}
+            {t.footer.copyrightBefore}
+            <a
+              className={styles.companyLink}
+              href={FOOTER_COMPANY_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.footer.copyrightCompany}
+            </a>
           </p>
         </div>
       </div>

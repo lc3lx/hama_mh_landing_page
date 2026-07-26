@@ -3,6 +3,7 @@ import { Button } from '@components/atoms/Button';
 import { Text } from '@components/atoms/Text';
 import { SectionContainer } from '@components/organisms/SectionContainer';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
+import { useI18n } from '@i18n';
 import {
   DAILY_RETURN_RATE,
   DEFAULT_AMOUNT,
@@ -12,8 +13,6 @@ import {
   MAX_DAYS,
   MIN_AMOUNT,
   MIN_DAYS,
-  PRICING_COPY,
-  PRICING_SPECS,
 } from '../../data/pricing';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
 import styles from './PricingSection.module.css';
@@ -29,6 +28,7 @@ function parseAmountInput(raw: string): number {
  * Binary Options Plan • Pro estimate card with amount + day controls.
  */
 export function PricingSection() {
+  const { t } = useI18n();
   const amountId = useId();
   const daysId = useId();
   const [amountInput, setAmountInput] = useState(`${DEFAULT_AMOUNT}$`);
@@ -72,16 +72,16 @@ export function PricingSection() {
             tone="primary"
             className={styles.planTitle}
           >
-            {PRICING_COPY.planTitle}
+            {t.pricing.planTitle}
           </Text>
           <div className={styles.returnBlock}>
-            <p className={styles.returnRate}>{PRICING_COPY.dailyReturn}</p>
-            <p className={styles.returnNote}>{PRICING_COPY.dailyReturnNote}</p>
+            <p className={styles.returnRate}>{t.pricing.dailyReturn}</p>
+            <p className={styles.returnNote}>{t.pricing.dailyReturnNote}</p>
           </div>
         </header>
 
         <dl className={styles.specs}>
-          {PRICING_SPECS.map((spec) => (
+          {t.pricing.specs.map((spec) => (
             <div key={spec.label} className={styles.specRow}>
               <dt className={styles.specLabel}>{spec.label}</dt>
               <dd className={styles.specValue}>{spec.value}</dd>
@@ -91,7 +91,7 @@ export function PricingSection() {
 
         <div className={styles.amountField}>
           <label className={styles.amountLabel} htmlFor={amountId}>
-            {PRICING_COPY.amountLabel}
+            {t.pricing.amountLabel}
           </label>
           <input
             id={amountId}
@@ -108,14 +108,13 @@ export function PricingSection() {
             aria-describedby={`${amountId}-hint`}
           />
           <span id={`${amountId}-hint`} className={styles.srOnly}>
-            Minimum amount {MIN_AMOUNT} dollars. Estimates use up to{' '}
-            {DAILY_RETURN_RATE * 100}% daily return and are not guaranteed.
+            {t.pricing.disclaimer} ({MIN_AMOUNT}$, {DAILY_RETURN_RATE * 100}%)
           </span>
         </div>
 
         <div className={styles.sliderBlock} style={sliderVars}>
           <label className={styles.srOnly} htmlFor={daysId}>
-            Duration in days
+            {t.pricing.daysLabel}
           </label>
           <div className={styles.sliderTrackWrap}>
             <div className={styles.sliderTrack} aria-hidden="true">
@@ -134,7 +133,7 @@ export function PricingSection() {
               aria-valuemin={MIN_DAYS}
               aria-valuemax={MAX_DAYS}
               aria-valuenow={days}
-              aria-valuetext={`${days} days`}
+              aria-valuetext={t.pricing.daysValue(days)}
             />
           </div>
           <div className={styles.sliderScale} aria-hidden="true">
@@ -142,18 +141,18 @@ export function PricingSection() {
             <span className={styles.scaleCurrent}>{days}</span>
             <span className={styles.scaleEdge}>{MAX_DAYS}</span>
           </div>
-          <p className={styles.disclaimer}>{PRICING_COPY.disclaimer}</p>
+          <p className={styles.disclaimer}>{t.pricing.disclaimer}</p>
         </div>
 
         <div className={styles.results}>
           <div className={styles.resultCard}>
-            <p className={styles.resultLabel}>{PRICING_COPY.estProfitLabel}</p>
+            <p className={styles.resultLabel}>{t.pricing.estProfitLabel}</p>
             <p className={styles.resultValue} aria-live="polite">
               {formatUsd(profit)}
             </p>
           </div>
           <div className={styles.resultCard}>
-            <p className={styles.resultLabel}>{PRICING_COPY.totalLabel}</p>
+            <p className={styles.resultLabel}>{t.pricing.totalLabel}</p>
             <p className={styles.resultValue} aria-live="polite">
               {formatUsd(total)}
             </p>
@@ -167,7 +166,7 @@ export function PricingSection() {
           fullWidth
           className={styles.cta}
         >
-          {PRICING_COPY.cta}
+          {t.pricing.cta}
         </Button>
       </div>
     </SectionContainer>

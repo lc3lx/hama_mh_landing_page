@@ -119,6 +119,14 @@
   line-height: 1.5; /* 29.313 / 19.542 */
 }
 
+.ctaArrow {
+  display: block;
+}
+
+:global([dir='rtl']) .ctaArrow {
+  transform: scaleX(-1);
+}
+
 /* Figma secondary CTA 55:534 */
 .secondaryCta {
   background-color: rgba(255, 255, 255, 0.03) !important;

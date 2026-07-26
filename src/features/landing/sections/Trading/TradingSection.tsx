@@ -4,11 +4,8 @@ import { Card } from '@components/molecules/Card';
 import { SectionTitle } from '@components/molecules/SectionTitle';
 import { SectionContainer } from '@components/organisms/SectionContainer';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
-import {
-  TRADING_BINOLLA,
-  TRADING_COPY,
-  TRADING_SIGNAL,
-} from '../../data/trading';
+import { useI18n } from '@i18n';
+import { TRADING_BINOLLA, TRADING_SIGNAL } from '../../data/trading';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
 import styles from './TradingSection.module.css';
 
@@ -17,6 +14,8 @@ import styles from './TradingSection.module.css';
  * Candles chart asset: 488:1266
  */
 export function TradingSection() {
+  const { t } = useI18n();
+
   return (
     <SectionContainer
       as="section"
@@ -33,11 +32,9 @@ export function TradingSection() {
           className={`${styles.copy} motionSlideUp`}
           align="start"
           titleAs="h2"
-          eyebrow={TRADING_COPY.eyebrow}
-          title={
-            <span id="trading-heading">{TRADING_COPY.title}</span>
-          }
-          description={TRADING_COPY.description}
+          eyebrow={t.trading.eyebrow}
+          title={<span id="trading-heading">{t.trading.title}</span>}
+          description={t.trading.description}
         />
 
         <div className={`${styles.cards} motionFadeIn`}>
@@ -47,11 +44,11 @@ export function TradingSection() {
             padding="none"
             className={`${styles.panel} ${styles.binolla}`}
             data-figma-node={TRADING_BINOLLA.figmaNodeId}
-            aria-label={TRADING_BINOLLA.title}
+            aria-label={t.trading.binollaTitle}
           >
             <div className={styles.binollaHeader}>
               <Text as="h3" variant="title" tone="heading" className={styles.cardTitle}>
-                {TRADING_BINOLLA.title}
+                {t.trading.binollaTitle}
               </Text>
               <Text as="p" variant="body" tone="accent" className={styles.pair}>
                 {TRADING_BINOLLA.pair}
@@ -70,24 +67,24 @@ export function TradingSection() {
               />
             </div>
 
-            <div className={styles.actions} role="group" aria-label="Trade direction preview">
+            <div className={styles.actions} role="group" aria-label={t.a11y.tradeDirection}>
               <Button
                 type="button"
                 variant="primary"
                 size="md"
                 className={styles.actionBtn}
-                aria-label={`${TRADING_BINOLLA.upLabel} — preview control`}
+                aria-label={t.trading.upLabel}
               >
-                {TRADING_BINOLLA.upLabel}
+                {t.trading.upLabel}
               </Button>
               <Button
                 type="button"
                 variant="secondary"
                 size="md"
                 className={`${styles.actionBtn} ${styles.btnDown}`}
-                aria-label={`${TRADING_BINOLLA.downLabel} — preview control`}
+                aria-label={t.trading.downLabel}
               >
-                {TRADING_BINOLLA.downLabel}
+                {t.trading.downLabel}
               </Button>
             </div>
           </Card>
@@ -98,25 +95,28 @@ export function TradingSection() {
             padding="none"
             className={`${styles.panel} ${styles.signal}`}
             data-figma-node={TRADING_SIGNAL.figmaNodeId}
-            aria-label={TRADING_SIGNAL.title}
+            aria-label={t.trading.signalTitle}
           >
             <Text as="h3" variant="title" tone="heading" className={styles.signalTitle}>
-              {TRADING_SIGNAL.title}
+              {t.trading.signalTitle}
             </Text>
 
             <dl className={styles.rows}>
-              {TRADING_SIGNAL.rows.map((row) => (
-                <div key={row.id} className={styles.row}>
-                  <dt className={styles.rowLabel}>{row.label}</dt>
-                  <dd
-                    className={`${styles.rowValue} ${
-                      row.tone === 'accent' ? styles.rowValueAccent : ''
-                    }`}
-                  >
-                    {row.value}
-                  </dd>
-                </div>
-              ))}
+              {TRADING_SIGNAL.rows.map((row) => {
+                const copy = t.trading.rows[row.id];
+                return (
+                  <div key={row.id} className={styles.row}>
+                    <dt className={styles.rowLabel}>{copy.label}</dt>
+                    <dd
+                      className={`${styles.rowValue} ${
+                        row.tone === 'accent' ? styles.rowValueAccent : ''
+                      }`}
+                    >
+                      {copy.value}
+                    </dd>
+                  </div>
+                );
+              })}
             </dl>
           </Card>
         </div>

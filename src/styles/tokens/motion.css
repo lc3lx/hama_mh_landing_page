@@ -1,6 +1,9 @@
 /**
  * Motion tokens — reusable across all Landing sections.
  * Respects prefers-reduced-motion via CSS global rules + utility classes.
+ *
+ * Reveal pattern: `.motion*` stay hidden until `.is-visible` is added
+ * by `useScrollReveal` when the element enters the viewport.
  */
 :root {
   /* Durations */
@@ -49,17 +52,41 @@
   --easing-emphasized: var(--motion-ease-emphasized);
 }
 
-/* Reusable motion utility classes (opt-in via className) */
-.motionFadeIn {
-  animation: motion-fade-in var(--motion-duration-base) var(--motion-ease-enter) both;
+/* Hidden until scroll reveal */
+.motionFadeIn,
+.motionSlideUp,
+.motionSlideDown,
+.motionScaleIn {
+  opacity: 0;
+  will-change: opacity, transform;
 }
 
 .motionSlideUp {
-  animation: motion-slide-up var(--motion-duration-slow) var(--motion-ease-enter) both;
+  transform: translateY(var(--motion-slide-md));
 }
 
 .motionSlideDown {
-  animation: motion-slide-down var(--motion-duration-slow) var(--motion-ease-enter) both;
+  transform: translateY(calc(var(--motion-slide-md) * -1));
+}
+
+.motionScaleIn {
+  transform: scale(0.96);
+}
+
+.motionFadeIn.is-visible {
+  animation: motion-fade-in var(--motion-duration-slow) var(--motion-ease-enter) both;
+}
+
+.motionSlideUp.is-visible {
+  animation: motion-slide-up var(--motion-duration-slower) var(--motion-ease-enter) both;
+}
+
+.motionSlideDown.is-visible {
+  animation: motion-slide-down var(--motion-duration-slower) var(--motion-ease-enter) both;
+}
+
+.motionScaleIn.is-visible {
+  animation: motion-scale-in var(--motion-duration-slower) var(--motion-ease-enter) both;
 }
 
 .motionHoverLift {
@@ -80,19 +107,52 @@
   transform: scale(var(--motion-hover-scale));
 }
 
-.motionStaggerChildren > *:nth-child(1) { animation-delay: calc(var(--motion-stagger-step) * 0); }
-.motionStaggerChildren > *:nth-child(2) { animation-delay: calc(var(--motion-stagger-step) * 1); }
-.motionStaggerChildren > *:nth-child(3) { animation-delay: calc(var(--motion-stagger-step) * 2); }
-.motionStaggerChildren > *:nth-child(4) { animation-delay: calc(var(--motion-stagger-step) * 3); }
-.motionStaggerChildren > *:nth-child(5) { animation-delay: calc(var(--motion-stagger-step) * 4); }
-.motionStaggerChildren > *:nth-child(6) { animation-delay: calc(var(--motion-stagger-step) * 5); }
-.motionStaggerChildren > *:nth-child(7) { animation-delay: calc(var(--motion-stagger-step) * 6); }
-.motionStaggerChildren > *:nth-child(8) { animation-delay: calc(var(--motion-stagger-step) * 7); }
-.motionStaggerChildren > *:nth-child(9) { animation-delay: calc(var(--motion-stagger-step) * 8); }
+/* Stagger children when the parent becomes visible */
+.motionStaggerChildren > * {
+  opacity: 0;
+  transform: translateY(var(--motion-slide-sm));
+  will-change: opacity, transform;
+}
+
+.motionStaggerChildren.is-visible > * {
+  animation: motion-slide-up var(--motion-duration-slow) var(--motion-ease-enter) both;
+}
+
+.motionStaggerChildren.is-visible > *:nth-child(1) {
+  animation-delay: calc(var(--motion-stagger-step) * 0);
+}
+.motionStaggerChildren.is-visible > *:nth-child(2) {
+  animation-delay: calc(var(--motion-stagger-step) * 1);
+}
+.motionStaggerChildren.is-visible > *:nth-child(3) {
+  animation-delay: calc(var(--motion-stagger-step) * 2);
+}
+.motionStaggerChildren.is-visible > *:nth-child(4) {
+  animation-delay: calc(var(--motion-stagger-step) * 3);
+}
+.motionStaggerChildren.is-visible > *:nth-child(5) {
+  animation-delay: calc(var(--motion-stagger-step) * 4);
+}
+.motionStaggerChildren.is-visible > *:nth-child(6) {
+  animation-delay: calc(var(--motion-stagger-step) * 5);
+}
+.motionStaggerChildren.is-visible > *:nth-child(7) {
+  animation-delay: calc(var(--motion-stagger-step) * 6);
+}
+.motionStaggerChildren.is-visible > *:nth-child(8) {
+  animation-delay: calc(var(--motion-stagger-step) * 7);
+}
+.motionStaggerChildren.is-visible > *:nth-child(9) {
+  animation-delay: calc(var(--motion-stagger-step) * 8);
+}
 
 @keyframes motion-fade-in {
-  from { opacity: var(--motion-fade-from); }
-  to { opacity: var(--motion-fade-to); }
+  from {
+    opacity: var(--motion-fade-from);
+  }
+  to {
+    opacity: var(--motion-fade-to);
+  }
 }
 
 @keyframes motion-slide-up {
@@ -117,11 +177,25 @@
   }
 }
 
+@keyframes motion-scale-in {
+  from {
+    opacity: var(--motion-fade-from);
+    transform: scale(0.96);
+  }
+  to {
+    opacity: var(--motion-fade-to);
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motionFadeIn,
   .motionSlideUp,
   .motionSlideDown,
+  .motionScaleIn,
   .motionStaggerChildren > * {
+    opacity: 1 !important;
+    transform: none !important;
     animation: none !important;
     transition: none !important;
   }

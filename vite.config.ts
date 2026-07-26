@@ -12,6 +12,7 @@ export default defineConfig({
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@features': path.resolve(__dirname, 'src/features'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@i18n': path.resolve(__dirname, 'src/i18n'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@performance': path.resolve(__dirname, 'src/performance'),
       '@router': path.resolve(__dirname, 'src/router'),

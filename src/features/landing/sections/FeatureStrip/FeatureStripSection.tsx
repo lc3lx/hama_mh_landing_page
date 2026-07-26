@@ -1,5 +1,6 @@
 import { SectionContainer } from '@components/organisms/SectionContainer';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
+import { useI18n } from '@i18n';
 import { FEATURE_STRIP_ITEMS } from '../../data/featureStrip';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
 import styles from './FeatureStripSection.module.css';
@@ -9,6 +10,8 @@ import styles from './FeatureStripSection.module.css';
  * Horizontal checklist of product capabilities under the Hero.
  */
 export function FeatureStripSection() {
+  const { t } = useI18n();
+
   return (
     <SectionContainer
       as="section"
@@ -18,9 +21,9 @@ export function FeatureStripSection() {
       background="transparent"
       className={styles.strip}
       data-figma-node={FIGMA_LANDING_NODES.featureStrip}
-      aria-label="Product highlights"
+      aria-label={t.a11y.productHighlights}
     >
-      <ul className={`${styles.list} motionFadeIn`}>
+      <ul className={`${styles.list} motionFadeIn motionStaggerChildren`}>
         {FEATURE_STRIP_ITEMS.map((item) => (
           <li key={item.id} className={styles.item} data-figma-node={item.figmaNodeId}>
             <img
@@ -33,7 +36,7 @@ export function FeatureStripSection() {
               loading="lazy"
               aria-hidden="true"
             />
-            <span className={styles.label}>{item.label}</span>
+            <span className={styles.label}>{t.featureStrip.items[item.id]}</span>
           </li>
         ))}
       </ul>

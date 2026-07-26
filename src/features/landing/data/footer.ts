@@ -20,9 +20,14 @@ export const FOOTER_COPY = {
   disclaimerBefore: 'By subscribing, you agree to our ',
   disclaimerLinkLabel: 'Privacy Policy',
   disclaimerAfter: ' and provide consent to receive updates from our company.',
-  copyright: '© 2026 Scar Alpha AI. developed by Hul Company',
+  copyrightBefore: '© 2026 Scar Alpha AI. developed by ',
+  copyrightCompany: 'Hul Company',
   logoAlt: 'Scar Alpha AI',
 } as const;
+
+/** Developer credit — opens HUL Arabic site */
+export const FOOTER_COMPANY_HREF = 'https://hul-co.com/ar';
+
 
 /** Reuses Header logo asset — Figma footer mark 491:1579 matches Header 56:8085 brand. */
 export const FOOTER_LOGO = {

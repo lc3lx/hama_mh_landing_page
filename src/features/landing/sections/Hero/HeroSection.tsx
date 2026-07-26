@@ -6,8 +6,9 @@ import { SectionContainer } from '@components/organisms/SectionContainer';
 import { BREAKPOINTS } from '@constants/breakpoints';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
 import { useMinWidth } from '@hooks/useBreakpoint';
+import { useI18n } from '@i18n';
 import { LazyImage, preloadHeroAsset } from '@performance';
-import { HERO_COPY, heroAssets } from '../../data';
+import { heroAssets } from '../../data';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
 import styles from './HeroSection.module.css';
 
@@ -15,6 +16,7 @@ import styles from './HeroSection.module.css';
  * Landing Hero — Figma 55:515 (copy) + 388:1507 (phones) + 388:1529/1530 (glows)
  */
 export function HeroSection() {
+  const { t } = useI18n();
   const isDesktopPhones = useMinWidth(BREAKPOINTS.tablet + 1); // >768 duo layout
 
   useEffect(() => {
@@ -72,15 +74,15 @@ export function HeroSection() {
               />
             }
           >
-            {HERO_COPY.eyebrow}
+            {t.hero.eyebrow}
           </Badge>
 
           <Text as="h1" variant="hero" tone="heading" className={styles.title}>
-            {HERO_COPY.title}
+            {t.hero.title}
           </Text>
 
           <Text as="p" variant="body" tone="body" className={styles.description}>
-            {HERO_COPY.description}
+            {t.hero.description}
           </Text>
 
           <div className={styles.actions}>
@@ -88,9 +90,10 @@ export function HeroSection() {
               variant="primary"
               size="md"
               type="button"
-              aria-label={HERO_COPY.primaryCta}
+              aria-label={t.hero.primaryCta}
               endIcon={
                 <img
+                  className={styles.ctaArrow}
                   src={heroAssets.arrowRight}
                   alt=""
                   width={20}
@@ -100,30 +103,30 @@ export function HeroSection() {
                 />
               }
             >
-              {HERO_COPY.primaryCta}
+              {t.hero.primaryCta}
             </Button>
 
             <Button
               variant="secondary"
               size="md"
-              href={HERO_COPY.secondaryHref}
+              href={`#${LANDING_SECTION_IDS.botEngine}`}
               className={styles.secondaryCta}
-              aria-label={HERO_COPY.secondaryCta}
+              aria-label={t.hero.secondaryCta}
             >
-              {HERO_COPY.secondaryCta}
+              {t.hero.secondaryCta}
             </Button>
           </div>
         </div>
 
         <div
-          className={`${styles.visual} motionFadeIn`}
+          className={`${styles.visual} motionScaleIn`}
           data-figma-node={FIGMA_LANDING_NODES.heroPhones}
         >
           {isDesktopPhones ? (
             <LazyImage
               className={styles.phonesDuo}
               src={heroAssets.phonesDuo}
-              alt="Scar Alpha AI mobile app preview on two phones"
+              alt={t.hero.phonesDuoAlt}
               width={563}
               height={749}
               priority
@@ -133,14 +136,14 @@ export function HeroSection() {
               <LazyImage
                 className={styles.phone}
                 src={heroAssets.phoneSplash}
-                alt="Scar Alpha AI splash screen on iPhone"
+                alt={t.hero.phoneSplashAlt}
                 width={249}
                 height={591}
               />
               <LazyImage
                 className={styles.phone}
                 src={heroAssets.phoneDashboard}
-                alt="Scar Alpha AI dashboard on iPhone"
+                alt={t.hero.phoneDashboardAlt}
                 width={249}
                 height={591}
               />

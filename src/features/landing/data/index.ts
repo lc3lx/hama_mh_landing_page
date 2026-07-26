@@ -19,5 +19,6 @@ export {
   FOOTER_LOGO,
   FOOTER_NAV_GROUPS,
   FOOTER_PRIVACY_HREF,
+  FOOTER_COMPANY_HREF,
 } from './footer';
 export type { FooterLink, FooterNavGroup } from './footer';
