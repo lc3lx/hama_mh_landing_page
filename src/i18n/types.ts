@@ -48,6 +48,7 @@ export type Messages = {
     switchLanguage: string;
     productHighlights: string;
     tradeDirection: string;
+    splashLoading: string;
   };
   header: {
     logoAlt: string;

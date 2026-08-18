@@ -7,8 +7,10 @@ const REVEAL_SELECTOR =
  * Adds `.is-visible` when motion targets enter the viewport.
  * Animations are defined in `styles/tokens/motion.css`.
  */
-export function useScrollReveal() {
+export function useScrollReveal(enabled = true) {
   useEffect(() => {
+    if (!enabled) return;
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const targets = [...document.querySelectorAll<HTMLElement>(REVEAL_SELECTOR)];
 
@@ -34,7 +36,7 @@ export function useScrollReveal() {
 
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [enabled]);
 }
 
 /** Shows after the user scrolls past `offsetPx`. */

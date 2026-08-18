@@ -12,6 +12,7 @@ export const en: Messages = {
     switchLanguage: 'Switch language',
     productHighlights: 'Product highlights',
     tradeDirection: 'Trade direction preview',
+    splashLoading: 'Loading Scar Alpha AI',
   },
   header: {
     logoAlt: 'Scar Alpha AI',

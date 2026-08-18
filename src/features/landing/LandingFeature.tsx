@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { PageShell } from '@components/layouts';
 import { ScrollToTop } from '@components/atoms/ScrollToTop';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
@@ -5,6 +6,7 @@ import { useScrollReveal } from '@hooks/useScrollMotion';
 import { useI18n } from '@i18n';
 import { DocumentHead } from '@seo';
 import { cn } from '@utils/cn';
+import { LogoSplash } from './components/LogoSplash';
 import { HeaderSection } from './sections/Header';
 import { HeroSection } from './sections/Hero';
 import { FeatureStripSection } from './sections/FeatureStrip';
@@ -20,14 +22,17 @@ import type { LandingFeatureProps } from './types';
 import styles from './LandingFeature.module.css';
 
 /**
- * Landing feature entry — full page with scroll reveal + back-to-top.
+ * Landing feature entry — splash intro, then full page with scroll reveal + back-to-top.
  */
 export function LandingFeature({ className }: LandingFeatureProps) {
-  useScrollReveal();
+  const [splashDone, setSplashDone] = useState(false);
+  const onSplashFinished = useCallback(() => setSplashDone(true), []);
+  useScrollReveal(splashDone);
   const { t, locale } = useI18n();
 
   return (
     <>
+      <LogoSplash onFinished={onSplashFinished} />
       <DocumentHead
         key={locale}
         seo={{
@@ -47,6 +52,7 @@ export function LandingFeature({ className }: LandingFeatureProps) {
       <PageShell
         className={cn(styles.root, className)}
         data-figma-node={FIGMA_LANDING_NODES.desktopRoot}
+        aria-hidden={!splashDone}
       >
         <HeaderSection />
         <HeroSection />

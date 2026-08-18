@@ -12,6 +12,7 @@ export const ar: Messages = {
     switchLanguage: 'تبديل اللغة',
     productHighlights: 'أبرز مزايا المنتج',
     tradeDirection: 'معاينة اتجاه التداول',
+    splashLoading: 'جاري تحميل سكار ألفا AI',
   },
   header: {
     logoAlt: 'سكار ألفا AI',
