@@ -34,13 +34,6 @@
   pointer-events: none;
 }
 
-.filters {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
 .stage {
   position: relative;
   z-index: 1;
@@ -61,6 +54,7 @@
   display: block;
   width: min(86vw, 34.5rem);
   height: auto;
+  overflow: visible;
   filter: drop-shadow(0 0 28px rgba(221, 1, 1, 0.45));
 }
 

@@ -58,7 +58,7 @@ export function LogoSplash({ onFinished }: LogoSplashProps) {
         <div className={styles.wobble}>
           <svg
             className={styles.logo}
-            viewBox="0 0 142 61"
+            viewBox="-10 -16 162 93"
             role="img"
             aria-label={t.header.logoAlt}
           >
