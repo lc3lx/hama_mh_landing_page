@@ -26,12 +26,13 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
-    allowedHosts: ['.scaralphaai.com', 'scaralphaai.com'],
+    allowedHosts: true,
   },
   preview: {
     host: true,
     port: 3004,
-    allowedHosts: ['.scaralphaai.com', 'scaralphaai.com'],
+    strictPort: true,
+    allowedHosts: true,
   },
   build: {
     target: 'es2020',
