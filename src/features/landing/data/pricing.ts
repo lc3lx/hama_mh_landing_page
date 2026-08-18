@@ -1,72 +1,155 @@
-import sliderThumbUrl from '@assets/icons/pricing/slider-thumb.svg';
+import iconDeposit from '@assets/icons/pricing/icon-deposit.svg';
+import iconBonus from '@assets/icons/pricing/icon-bonus.svg';
+import iconBalance from '@assets/icons/pricing/icon-balance.svg';
+import iconProfit from '@assets/icons/pricing/icon-profit.svg';
+import iconTurnover from '@assets/icons/pricing/icon-turnover.svg';
+import iconDepositGold from '@assets/icons/pricing/icon-deposit-gold.svg';
+import iconBonusGold from '@assets/icons/pricing/icon-bonus-gold.svg';
+import iconBalanceGold from '@assets/icons/pricing/icon-balance-gold.svg';
+import iconProfitGold from '@assets/icons/pricing/icon-profit-gold.svg';
+import iconTurnoverGold from '@assets/icons/pricing/icon-turnover-gold.svg';
+import glowRed from '@assets/icons/pricing/glow-red.svg';
+import glowGold from '@assets/icons/pricing/glow-gold.svg';
 import { registerAsset } from '@assets';
+import { FIGMA_LANDING_NODES } from '@constants/figma';
 
 registerAsset({
-  id: 'icon-pricing-slider-thumb',
+  id: 'icon-pricing-deposit',
   kind: 'icon',
-  src: sliderThumbUrl,
+  src: iconDeposit,
   alt: '',
   format: 'svg',
-  figmaNodeId: '523:1933',
-  width: 20,
-  height: 20,
+  figmaNodeId: '641:317',
+  width: 21,
+  height: 21,
 });
 
-/**
- * Pricing calculator config — Figma 524:1946.
- *
- * Figma static Est. Profit ($112.50) / Total ($612.50) do not match
- * amount=100$ × days=8 × 1.5%. Those canvas numbers are treated as
- * placeholder mock content, not the calculation source of truth.
- * The live estimate uses the configurable rate below (aligned with
- * “Up to 1.5% Estimated Daily Return”).
- */
-export const DAILY_RETURN_RATE = 0.015;
-export const MIN_AMOUNT = 100;
-export const MAX_DAYS = 30;
-export const DEFAULT_AMOUNT = 100;
-export const DEFAULT_DAYS = 8;
-export const MIN_DAYS = 1;
+registerAsset({
+  id: 'icon-pricing-bonus',
+  kind: 'icon',
+  src: iconBonus,
+  alt: '',
+  format: 'svg',
+  figmaNodeId: '641:325',
+  width: 22,
+  height: 22,
+});
 
-/** @deprecated Prefer named exports above; kept for existing imports. */
-export const PRICING_CALC = {
-  dailyRate: DAILY_RETURN_RATE,
-  minAmount: MIN_AMOUNT,
-  minDays: MIN_DAYS,
-  maxDays: MAX_DAYS,
-  defaultAmount: DEFAULT_AMOUNT,
-  defaultDays: DEFAULT_DAYS,
-} as const;
+registerAsset({
+  id: 'icon-pricing-balance',
+  kind: 'icon',
+  src: iconBalance,
+  alt: '',
+  format: 'svg',
+  figmaNodeId: '641:329',
+  width: 22,
+  height: 22,
+});
 
-/** Pricing calculator — Figma 524:1946 / info-block 523:1903 */
-export const PRICING_COPY = {
-  planTitle: 'Binary Options Plan • Pro',
-  dailyReturn: `Up to ${DAILY_RETURN_RATE * 100}%`,
-  dailyReturnNote: 'Estimated Daily Return (Not Guaranteed)',
-  amountLabel: 'Enter Amount ($)',
-  disclaimer: 'Estimated results only — you may profit or lose.',
-  estProfitLabel: 'Est. Profit',
-  totalLabel: 'Total',
-  cta: 'Estimate Plan',
-} as const;
+registerAsset({
+  id: 'icon-pricing-profit',
+  kind: 'icon',
+  src: iconProfit,
+  alt: '',
+  format: 'svg',
+  figmaNodeId: '641:320',
+  width: 23,
+  height: 14,
+});
 
-export const PRICING_SPECS = [
-  { label: 'Duration:', value: `Up to ${MAX_DAYS} days` },
-  { label: 'Minimum:', value: `${MIN_AMOUNT}$` },
-  { label: 'Risk Level:', value: 'Variable' },
-  { label: 'Transparency:', value: 'Simulated Estimate Only' },
+registerAsset({
+  id: 'icon-pricing-turnover',
+  kind: 'icon',
+  src: iconTurnover,
+  alt: '',
+  format: 'svg',
+  figmaNodeId: '642:462',
+  width: 20,
+  height: 21,
+});
+
+export type PricingRowId = 'deposit' | 'bonus' | 'balance' | 'profit' | 'turnover';
+export type PricingPlanId = 'starter-50' | 'starter-250' | 'starter-1000' | 'starter-2500';
+export type PricingPlanTone = 'red' | 'gold';
+
+export type PricingIcon = {
+  src: string;
+  width: number;
+  height: number;
+};
+
+export type PricingPlan = {
+  id: PricingPlanId;
+  tone: PricingPlanTone;
+  popular: boolean;
+  figmaNodeId: string;
+  glowSrc: string;
+  rows: readonly PricingRowId[];
+  icons: Record<PricingRowId, PricingIcon>;
+};
+
+const RED_ICONS: Record<PricingRowId, PricingIcon> = {
+  deposit: { src: iconDeposit, width: 21, height: 21 },
+  bonus: { src: iconBonus, width: 22, height: 22 },
+  balance: { src: iconBalance, width: 22, height: 22 },
+  profit: { src: iconProfit, width: 23, height: 14 },
+  turnover: { src: iconTurnover, width: 20, height: 21 },
+};
+
+const GOLD_ICONS: Record<PricingRowId, PricingIcon> = {
+  deposit: { src: iconDepositGold, width: 21, height: 21 },
+  bonus: { src: iconBonusGold, width: 22, height: 22 },
+  balance: { src: iconBalanceGold, width: 22, height: 22 },
+  profit: { src: iconProfitGold, width: 23, height: 14 },
+  turnover: { src: iconTurnoverGold, width: 20, height: 21 },
+};
+
+/** Bonus packages — Figma 641:182 / 642:445 / 642:463 / 642:481 */
+export const PRICING_PLANS: readonly PricingPlan[] = [
+  {
+    id: 'starter-50',
+    tone: 'red',
+    popular: false,
+    figmaNodeId: FIGMA_LANDING_NODES.pricingPlan50,
+    glowSrc: glowRed,
+    rows: ['deposit', 'bonus', 'balance', 'profit'],
+    icons: RED_ICONS,
+  },
+  {
+    id: 'starter-250',
+    tone: 'red',
+    popular: false,
+    figmaNodeId: FIGMA_LANDING_NODES.pricingPlan250,
+    glowSrc: glowRed,
+    rows: ['deposit', 'bonus', 'balance', 'profit', 'turnover'],
+    icons: RED_ICONS,
+  },
+  {
+    id: 'starter-1000',
+    tone: 'gold',
+    popular: true,
+    figmaNodeId: FIGMA_LANDING_NODES.pricingPlan1000,
+    glowSrc: glowGold,
+    rows: ['deposit', 'bonus', 'balance', 'profit', 'turnover'],
+    icons: GOLD_ICONS,
+  },
+  {
+    id: 'starter-2500',
+    tone: 'red',
+    popular: false,
+    figmaNodeId: FIGMA_LANDING_NODES.pricingPlan2500,
+    glowSrc: glowRed,
+    rows: ['deposit', 'bonus', 'balance', 'profit', 'turnover'],
+    icons: RED_ICONS,
+  },
 ] as const;
 
 export const pricingAssets = {
-  sliderThumb: sliderThumbUrl,
+  glowRed,
+  glowGold,
+  deposit: iconDeposit,
+  bonus: iconBonus,
+  balance: iconBalance,
+  profit: iconProfit,
+  turnover: iconTurnover,
 } as const;
-
-export function estimateProfit(amount: number, days: number): number {
-  const safeAmount = Math.max(0, amount);
-  const safeDays = Math.min(MAX_DAYS, Math.max(MIN_DAYS, days));
-  return safeAmount * DAILY_RETURN_RATE * safeDays;
-}
-
-export function formatUsd(value: number): string {
-  return `$${value.toFixed(2)}`;
-}

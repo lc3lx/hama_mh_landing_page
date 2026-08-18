@@ -74,22 +74,53 @@ export const ar: Messages = {
     },
   },
   pricing: {
-    planTitle: 'خطة الخيارات الثنائية • Pro',
-    dailyReturn: 'حتى 1.5%',
-    dailyReturnNote: 'عائد يومي تقديري (غير مضمون)',
-    amountLabel: 'أدخل المبلغ ($)',
-    disclaimer: 'نتائج تقديرية فقط — قد تربح أو تخسر.',
-    estProfitLabel: 'الربح التقديري',
-    totalLabel: 'الإجمالي',
-    cta: 'تقدير الخطة',
-    daysLabel: 'المدة بالأيام',
-    daysValue: (days) => `${days} يوماً`,
-    specs: [
-      { label: 'المدة:', value: 'حتى 30 يوماً' },
-      { label: 'الحد الأدنى:', value: '100$' },
-      { label: 'مستوى المخاطر:', value: 'متغير' },
-      { label: 'الشفافية:', value: 'تقدير محاكي فقط' },
-    ],
+    eyebrow: 'باقات البونص',
+    title: 'اختر خطة بونص الإيداع',
+    description:
+      'مركز تحكم هادئ لاختيار السوق وإعداد الاستراتيجية ورؤى الإشارات وضوابط المخاطر.',
+    cta: 'اختر هذه الخطة',
+    popular: 'الأكثر شعبية',
+    plans: {
+      'starter-50': {
+        title: 'Starter 50',
+        rows: {
+          deposit: 'إيداع 50$',
+          bonus: 'بونص 15$',
+          balance: 'الرصيد الإجمالي 65$',
+          profit: 'الربح اليومي: 30%',
+        },
+      },
+      'starter-250': {
+        title: 'Starter 250',
+        rows: {
+          deposit: 'إيداع 250$',
+          bonus: 'بونص 150$',
+          balance: 'الرصيد الإجمالي 400$',
+          profit: 'الربح اليومي: 20%',
+          turnover: 'التيرن أوفر: 2%',
+        },
+      },
+      'starter-1000': {
+        title: 'Starter 1000',
+        rows: {
+          deposit: 'إيداع 1,000$',
+          bonus: 'بونص 500$',
+          balance: 'الرصيد الإجمالي 1,500$',
+          profit: 'الربح اليومي: 20–22%',
+          turnover: 'التيرن أوفر: 2.5%',
+        },
+      },
+      'starter-2500': {
+        title: 'Starter 2500',
+        rows: {
+          deposit: 'إيداع 2500$',
+          bonus: 'بونص 750$',
+          balance: 'الرصيد الإجمالي 3250$',
+          profit: 'الربح اليومي: 25%',
+          turnover: 'التيرن أوفر: 3%',
+        },
+      },
+    },
   },
   botEngine: {
     eyebrow: 'محرك بوت الذكاء',

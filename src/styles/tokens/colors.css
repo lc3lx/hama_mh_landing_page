@@ -33,6 +33,13 @@
   --color-card-to: #200302;
   --color-card-border: rgba(221, 9, 18, 0.4);
 
+  /* Bonus packages — Figma 641:182 / 642:463 */
+  --color-plan-gold-from: #936822;
+  --color-plan-gold-to: #4d3610;
+  --color-plan-gold-border: rgba(147, 104, 34, 0.4);
+  --color-plan-gold-cta: #ff9e00;
+  --color-plan-popular-badge: #3d302e;
+
   /* AI Bot Engine cards — Figma 55:172 / 488:89 */
   --color-engine-card: #0f0f0f;
   --color-engine-icon-plate: #1d1b1c;

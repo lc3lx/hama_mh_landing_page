@@ -10,6 +10,7 @@
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
   --radius-card: 2.076rem; /* ~33.22px — Figma Article card */
+  --radius-plan-card: 1.25rem; /* 20px — Bonus package cards */
   --radius-engine-card: 1.221375rem; /* 19.542px — Bot Engine card */
   --radius-engine-icon: 0.75rem; /* 12px — Bot Engine icon plate */
   --radius-trading-card: 2.44275rem; /* 39.084px — Trading cards */

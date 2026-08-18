@@ -87,17 +87,18 @@ export type Messages = {
     >;
   };
   pricing: {
-    planTitle: string;
-    dailyReturn: string;
-    dailyReturnNote: string;
-    amountLabel: string;
-    disclaimer: string;
-    estProfitLabel: string;
-    totalLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
     cta: string;
-    daysLabel: string;
-    daysValue: (days: number) => string;
-    specs: Array<{ label: string; value: string }>;
+    popular: string;
+    plans: Record<
+      'starter-50' | 'starter-250' | 'starter-1000' | 'starter-2500',
+      {
+        title: string;
+        rows: Partial<Record<'deposit' | 'bonus' | 'balance' | 'profit' | 'turnover', string>>;
+      }
+    >;
   };
   botEngine: {
     eyebrow: string;

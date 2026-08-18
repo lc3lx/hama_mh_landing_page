@@ -74,22 +74,53 @@ export const en: Messages = {
     },
   },
   pricing: {
-    planTitle: 'Binary Options Plan • Pro',
-    dailyReturn: 'Up to 1.5%',
-    dailyReturnNote: 'Estimated Daily Return (Not Guaranteed)',
-    amountLabel: 'Enter Amount ($)',
-    disclaimer: 'Estimated results only — you may profit or lose.',
-    estProfitLabel: 'Est. Profit',
-    totalLabel: 'Total',
-    cta: 'Estimate Plan',
-    daysLabel: 'Duration in days',
-    daysValue: (days) => `${days} days`,
-    specs: [
-      { label: 'Duration:', value: 'Up to 30 days' },
-      { label: 'Minimum:', value: '100$' },
-      { label: 'Risk Level:', value: 'Variable' },
-      { label: 'Transparency:', value: 'Simulated Estimate Only' },
-    ],
+    eyebrow: 'BONUS PACKAGES',
+    title: 'Choose Your Deposit Bonus Plan',
+    description:
+      'A calm control center for market choice, strategy setup, signal insights, and risk controls.',
+    cta: 'Choose this plan',
+    popular: 'Most popular',
+    plans: {
+      'starter-50': {
+        title: 'Starter 50',
+        rows: {
+          deposit: '$50 Deposit',
+          bonus: '$15 Bonus',
+          balance: '$65 Total Balance',
+          profit: 'Daily Profit: 30%',
+        },
+      },
+      'starter-250': {
+        title: 'Starter 250',
+        rows: {
+          deposit: '$250 Deposit',
+          bonus: '$150 Bonus',
+          balance: '$400 Total Balance',
+          profit: 'Daily Profit: 20%',
+          turnover: 'Turnover: 2%',
+        },
+      },
+      'starter-1000': {
+        title: 'Starter 1000',
+        rows: {
+          deposit: '$1,000 Deposit',
+          bonus: '$500 Bonus',
+          balance: '$1,500 Total Balance',
+          profit: 'Daily Profit: 20–22%',
+          turnover: 'Turnover: 2.5%',
+        },
+      },
+      'starter-2500': {
+        title: 'Starter 2500',
+        rows: {
+          deposit: '$2500 Deposit',
+          bonus: '$750 Bonus',
+          balance: '$3250 Total Balance',
+          profit: 'Daily Profit: 25%',
+          turnover: 'Turnover: 3%',
+        },
+      },
+    },
   },
   botEngine: {
     eyebrow: 'AI Bot engine',

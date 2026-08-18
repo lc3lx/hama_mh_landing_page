@@ -6,14 +6,8 @@ export type { HeaderNavItem } from './headerNav';
 export { HERO_COPY, heroAssets } from './hero';
 export { FEATURE_STRIP_ITEMS, featureStripAssets } from './featureStrip';
 export { FEATURES_COPY, FEATURE_CARDS, featuresAssets } from './features';
-export {
-  PRICING_COPY,
-  PRICING_SPECS,
-  PRICING_CALC,
-  pricingAssets,
-  estimateProfit,
-  formatUsd,
-} from './pricing';
+export { PRICING_PLANS, pricingAssets } from './pricing';
+export type { PricingPlan, PricingPlanId, PricingRowId } from './pricing';
 export {
   FOOTER_COPY,
   FOOTER_LOGO,
