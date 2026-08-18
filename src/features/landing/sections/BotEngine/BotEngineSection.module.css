@@ -77,75 +77,13 @@
 .icon {
   position: absolute;
   display: block;
-  /* Assets are 2× Figma exports — scale into 1× frame box (never crop) */
+  inset-inline-start: calc(var(--icon-x) * 1px);
+  top: calc(var(--icon-y) * 1px);
+  width: calc(var(--icon-w) * 1px);
+  height: calc(var(--icon-h) * 1px);
   max-width: none;
-  object-fit: fill;
-  object-position: center;
+  object-fit: none;
   pointer-events: none;
-}
-
-/* Exact Figma image frames inside 85×85 plate — no CSS “fit” scaling */
-.icon_duration {
-  width: 51px;
-  height: 74px;
-  left: 17px;
-  top: 6px;
-}
-
-.icon_marketType {
-  width: 70px;
-  height: 69px;
-  left: 8px;
-  top: 8px;
-}
-
-.icon_tradingPair {
-  width: 77px;
-  height: 50px;
-  left: 4px;
-  top: 18px;
-}
-
-.icon_dailyProfit {
-  width: 74px;
-  height: 65px;
-  left: 6px;
-  top: 10px;
-}
-
-.icon_dailyLoss {
-  width: 61px;
-  height: 67px;
-  left: 12px;
-  top: 9px;
-}
-
-.icon_technical {
-  width: 66px;
-  height: 68px;
-  left: 10px;
-  top: 9px;
-}
-
-.icon_strategy {
-  width: 51px;
-  height: 78px;
-  left: 17px;
-  top: 3px;
-}
-
-.icon_signal {
-  width: 71px;
-  height: 64px;
-  left: 7px;
-  top: 11px;
-}
-
-.icon_botStatus {
-  width: 71px;
-  height: 72px;
-  left: 7px;
-  top: 7px;
 }
 
 .copy {
@@ -252,68 +190,11 @@
     height: 4.5rem;
   }
 
-  /* Scale Figma icon frames proportionally inside 72px plate (72/85) */
-  .icon_duration {
-    width: calc(51px * 72 / 85);
-    height: calc(74px * 72 / 85);
-    left: calc(17px * 72 / 85);
-    top: calc(6px * 72 / 85);
-  }
-
-  .icon_marketType {
-    width: calc(70px * 72 / 85);
-    height: calc(69px * 72 / 85);
-    left: calc(8px * 72 / 85);
-    top: calc(8px * 72 / 85);
-  }
-
-  .icon_tradingPair {
-    width: calc(77px * 72 / 85);
-    height: calc(50px * 72 / 85);
-    left: calc(4px * 72 / 85);
-    top: calc(18px * 72 / 85);
-  }
-
-  .icon_dailyProfit {
-    width: calc(74px * 72 / 85);
-    height: calc(65px * 72 / 85);
-    left: calc(6px * 72 / 85);
-    top: calc(10px * 72 / 85);
-  }
-
-  .icon_dailyLoss {
-    width: calc(61px * 72 / 85);
-    height: calc(67px * 72 / 85);
-    left: calc(12px * 72 / 85);
-    top: calc(9px * 72 / 85);
-  }
-
-  .icon_technical {
-    width: calc(66px * 72 / 85);
-    height: calc(68px * 72 / 85);
-    left: calc(10px * 72 / 85);
-    top: calc(9px * 72 / 85);
-  }
-
-  .icon_strategy {
-    width: calc(51px * 72 / 85);
-    height: calc(78px * 72 / 85);
-    left: calc(17px * 72 / 85);
-    top: calc(3px * 72 / 85);
-  }
-
-  .icon_signal {
-    width: calc(71px * 72 / 85);
-    height: calc(64px * 72 / 85);
-    left: calc(7px * 72 / 85);
-    top: calc(11px * 72 / 85);
-  }
-
-  .icon_botStatus {
-    width: calc(71px * 72 / 85);
-    height: calc(72px * 72 / 85);
-    left: calc(7px * 72 / 85);
-    top: calc(7px * 72 / 85);
+  .icon {
+    inset-inline-start: calc(var(--icon-x) * 72 / 85 * 1px);
+    top: calc(var(--icon-y) * 72 / 85 * 1px);
+    width: calc(var(--icon-w) * 72 / 85 * 1px);
+    height: calc(var(--icon-h) * 72 / 85 * 1px);
   }
 
   .heading :global([class*='description']) {

@@ -26,7 +26,7 @@ export const FOOTER_COPY = {
 } as const;
 
 /** Developer credit — opens HUL Arabic site */
-export const FOOTER_COMPANY_HREF = 'https://hul-co.com/ar';
+export const FOOTER_COMPANY_HREF = 'https://hul-co.com/';
 
 
 /** Reuses Header logo asset — Figma footer mark 491:1579 matches Header 56:8085 brand. */

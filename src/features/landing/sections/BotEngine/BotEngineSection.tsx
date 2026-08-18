@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Text } from '@components/atoms/Text';
 import { Card } from '@components/molecules/Card';
 import { SectionTitle } from '@components/molecules/SectionTitle';
@@ -7,18 +8,6 @@ import { useI18n } from '@i18n';
 import { BOT_ENGINE_CARDS } from '../../data/botEngine';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
 import styles from './BotEngineSection.module.css';
-
-const ICON_LAYOUT_CLASS: Record<(typeof BOT_ENGINE_CARDS)[number]['id'], string> = {
-  duration: styles.icon_duration,
-  'market-type': styles.icon_marketType,
-  'trading-pair': styles.icon_tradingPair,
-  'daily-profit-target': styles.icon_dailyProfit,
-  'daily-loss-limit': styles.icon_dailyLoss,
-  'technical-indicator': styles.icon_technical,
-  strategy: styles.icon_strategy,
-  'signal-strength': styles.icon_signal,
-  'current-bot-status': styles.icon_botStatus,
-};
 
 /**
  * AI Bot Engine — Figma 55:134 (title) + 524:1947–1949 (9 control cards)
@@ -50,6 +39,13 @@ export function BotEngineSection() {
       <ul className={`${styles.grid} motionFadeIn motionStaggerChildren`} role="list">
         {BOT_ENGINE_CARDS.map((card) => {
           const copy = t.botEngine.cards[card.id as keyof typeof t.botEngine.cards];
+          const iconVars = {
+            '--icon-w': card.iconWidth,
+            '--icon-h': card.iconHeight,
+            '--icon-x': card.iconOffsetX,
+            '--icon-y': card.iconOffsetY,
+          } as CSSProperties;
+
           return (
             <li key={card.id} className={styles.gridItem}>
               <Card
@@ -59,9 +55,9 @@ export function BotEngineSection() {
                 className={styles.card}
                 data-figma-node={card.figmaNodeId}
               >
-                <div className={styles.iconPlate} aria-hidden="true">
+                <div className={styles.iconPlate} aria-hidden="true" style={iconVars}>
                   <img
-                    className={`${styles.icon} ${ICON_LAYOUT_CLASS[card.id]}`}
+                    className={styles.icon}
                     src={card.icon}
                     alt=""
                     width={card.iconWidth}

@@ -6,7 +6,7 @@ import glowRightUrl from '@assets/backgrounds/hero/glow-right.svg';
 import eyebrowShieldUrl from '@assets/icons/hero-eyebrow-shield.svg';
 import arrowRightUrl from '@assets/icons/arrow-right.svg';
 import { registerAsset } from '@assets';
-import { LANDING_SECTION_IDS } from '../constants/sectionIds';
+import { TELEGRAM_BOT_HREF } from '../constants/links';
 
 registerAsset({
   id: 'hero-phones-duo',
@@ -93,7 +93,7 @@ export const HERO_COPY = {
     'Control your strategies, follow live trades, manage indicators, and trade through Binolla from one intelligent interface.',
   primaryCta: 'Create Account',
   secondaryCta: 'View Bot Preview',
-  secondaryHref: `#${LANDING_SECTION_IDS.botEngine}`,
+  secondaryHref: TELEGRAM_BOT_HREF,
 } as const;
 
 export const heroAssets = {

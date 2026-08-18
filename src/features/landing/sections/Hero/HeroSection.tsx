@@ -10,6 +10,7 @@ import { useI18n } from '@i18n';
 import { LazyImage, preloadHeroAsset } from '@performance';
 import { heroAssets } from '../../data';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
+import { CREATE_ACCOUNT_HREF, TELEGRAM_BOT_HREF } from '../../constants/links';
 import styles from './HeroSection.module.css';
 
 /**
@@ -89,7 +90,9 @@ export function HeroSection() {
             <Button
               variant="primary"
               size="md"
-              type="button"
+              href={CREATE_ACCOUNT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={t.hero.primaryCta}
               endIcon={
                 <img
@@ -109,7 +112,9 @@ export function HeroSection() {
             <Button
               variant="secondary"
               size="md"
-              href={`#${LANDING_SECTION_IDS.botEngine}`}
+              href={TELEGRAM_BOT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.secondaryCta}
               aria-label={t.hero.secondaryCta}
             >

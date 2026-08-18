@@ -77,7 +77,7 @@ export const en: Messages = {
     eyebrow: 'BONUS PACKAGES',
     title: 'Choose Your Deposit Bonus Plan',
     description:
-      'A calm control center for market choice, strategy setup, signal insights, and risk controls.',
+      'Flexible promotional plans with bonus balance, daily profit estimate, and turnover rate.',
     cta: 'Choose this plan',
     popular: 'Most popular',
     plans: {

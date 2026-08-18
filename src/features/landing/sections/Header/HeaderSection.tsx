@@ -3,6 +3,7 @@ import { SectionContainer } from '@components/organisms/SectionContainer';
 import { FIGMA_LANDING_NODES } from '@constants/figma';
 import { LOCALE_META, useI18n } from '@i18n';
 import { LANDING_SECTION_IDS } from '../../constants/sectionIds';
+import { CREATE_ACCOUNT_HREF } from '../../constants/links';
 import { HEADER_NAV_ITEMS, scarAlphaLogo } from '../../data';
 import styles from './HeaderSection.module.css';
 
@@ -61,7 +62,13 @@ export function HeaderSection() {
           </button>
 
           <div className={styles.cta}>
-            <Button variant="primary" size="md" type="button">
+            <Button
+              variant="primary"
+              size="md"
+              href={CREATE_ACCOUNT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {t.header.createAccount}
             </Button>
           </div>

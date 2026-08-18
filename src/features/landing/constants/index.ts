@@ -1,5 +1,6 @@
 export { LANDING_SECTION_IDS } from './sectionIds';
 export type { LandingSectionId } from './sectionIds';
+export { CREATE_ACCOUNT_HREF, TELEGRAM_BOT_HREF } from './links';
 
 export {
   FIGMA_FILE_KEY,

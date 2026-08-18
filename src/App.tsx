@@ -7,7 +7,7 @@ export default function App() {
   return (
     <I18nProvider>
       <div className={styles.app}>
-        <BrowserRouter>
+        <BrowserRouter basename="/landing">
           <AppRouter />
         </BrowserRouter>
       </div>

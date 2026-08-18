@@ -1,238 +1,207 @@
-import iconDuration from '@assets/images/bot-engine/duration.png';
-import iconDailyProfit from '@assets/images/bot-engine/daily-profit.png';
-import iconStrategy from '@assets/images/bot-engine/strategy.png';
-import iconMarketType from '@assets/images/bot-engine/market-type.png';
-import iconDailyLoss from '@assets/images/bot-engine/daily-loss.png';
-import iconSignalStrength from '@assets/images/bot-engine/signal-strength.png';
-import iconTradingPair from '@assets/images/bot-engine/trading-pair.png';
-import iconTechnicalIndicator from '@assets/images/bot-engine/technical-indicator.png';
-import iconBotStatus from '@assets/images/bot-engine/bot-status.png';
+import iconDuration from '@assets/icons/bot-engine/duration.svg';
+import iconDailyProfit from '@assets/icons/bot-engine/daily-profit.svg';
+import iconStrategy from '@assets/icons/bot-engine/strategy.svg';
+import iconMarketType from '@assets/icons/bot-engine/market-type.svg';
+import iconDailyLoss from '@assets/icons/bot-engine/daily-loss.svg';
+import iconSignalStrength from '@assets/icons/bot-engine/signal-strength.svg';
+import iconTradingPair from '@assets/icons/bot-engine/trading-pair.svg';
+import iconTechnicalIndicator from '@assets/icons/bot-engine/technical-indicator.svg';
+import iconBotStatus from '@assets/icons/bot-engine/bot-status.svg';
 import { registerAsset } from '@assets';
 
 registerAsset({
-  id: 'img-bot-engine-duration',
-  kind: 'image',
+  id: 'icon-bot-engine-duration',
+  kind: 'icon',
   src: iconDuration,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:148',
-  width: 51,
-  height: 74,
-});
-
-registerAsset({
-  id: 'img-bot-engine-daily-profit',
-  kind: 'image',
-  src: iconDailyProfit,
-  alt: '',
-  format: 'png',
-  figmaNodeId: '488:151',
-  width: 74,
+  format: 'svg',
+  figmaNodeId: '639:162',
+  width: 65,
   height: 65,
 });
 
 registerAsset({
-  id: 'img-bot-engine-strategy',
-  kind: 'image',
+  id: 'icon-bot-engine-daily-profit',
+  kind: 'icon',
+  src: iconDailyProfit,
+  alt: '',
+  format: 'svg',
+  figmaNodeId: '639:164',
+  width: 65,
+  height: 65,
+});
+
+registerAsset({
+  id: 'icon-bot-engine-strategy',
+  kind: 'icon',
   src: iconStrategy,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:142',
-  width: 51,
-  height: 78,
+  format: 'svg',
+  figmaNodeId: '639:166',
+  width: 65,
+  height: 65,
 });
 
 registerAsset({
-  id: 'img-bot-engine-market-type',
-  kind: 'image',
+  id: 'icon-bot-engine-market-type',
+  kind: 'icon',
   src: iconMarketType,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:133',
-  width: 70,
-  height: 69,
+  format: 'svg',
+  figmaNodeId: '639:168',
+  width: 59,
+  height: 66,
 });
 
 registerAsset({
-  id: 'img-bot-engine-daily-loss',
-  kind: 'image',
+  id: 'icon-bot-engine-daily-loss',
+  kind: 'icon',
   src: iconDailyLoss,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:154',
-  width: 61,
-  height: 67,
+  format: 'svg',
+  figmaNodeId: '643:504',
+  width: 67,
+  height: 40,
 });
 
 registerAsset({
-  id: 'img-bot-engine-signal-strength',
-  kind: 'image',
+  id: 'icon-bot-engine-signal-strength',
+  kind: 'icon',
   src: iconSignalStrength,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:157',
-  width: 71,
-  height: 64,
+  format: 'svg',
+  figmaNodeId: '639:174',
+  width: 61,
+  height: 53,
 });
 
 registerAsset({
-  id: 'img-bot-engine-trading-pair',
-  kind: 'image',
+  id: 'icon-bot-engine-trading-pair',
+  kind: 'icon',
   src: iconTradingPair,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:136',
-  width: 77,
-  height: 50,
+  format: 'svg',
+  figmaNodeId: '639:176',
+  width: 65,
+  height: 65,
 });
 
 registerAsset({
-  id: 'img-bot-engine-technical-indicator',
-  kind: 'image',
+  id: 'icon-bot-engine-technical-indicator',
+  kind: 'icon',
   src: iconTechnicalIndicator,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:139',
-  width: 66,
-  height: 68,
+  format: 'svg',
+  figmaNodeId: '639:178',
+  width: 52,
+  height: 65,
 });
 
 registerAsset({
-  id: 'img-bot-engine-bot-status',
-  kind: 'image',
+  id: 'icon-bot-engine-bot-status',
+  kind: 'icon',
   src: iconBotStatus,
   alt: '',
-  format: 'png',
-  figmaNodeId: '488:160',
-  width: 71,
-  height: 72,
+  format: 'svg',
+  figmaNodeId: '639:180',
+  width: 65,
+  height: 65,
 });
-
-export const BOT_ENGINE_COPY = {
-  eyebrow: 'AI Bot engine',
-  title: 'Control the AI Bot with precision',
-  description:
-    'A calm control center for market choice, strategy setup, signal insights, and risk controls.',
-} as const;
 
 export type BotEngineCard = {
   id: string;
-  title: string;
-  description: string;
   icon: string;
   figmaNodeId: string;
-  /** Figma image frame size (1x) */
   iconWidth: number;
   iconHeight: number;
-  /** Offset inside 85×85 plate (image left/top − plate left/top) */
   iconOffsetX: number;
   iconOffsetY: number;
 };
 
 /**
- * Desktop 3×3 order matches Figma columns 524:1949 / 524:1948 / 524:1947
- * (row-major: Duration → Market Type → Trading Pair → …).
- *
- * Icon geometry from Figma image nodes relative to plate Rectangle 1 (85×85).
+ * Desktop 3×3 order matches Figma columns 524:1949 / 524:1948 / 524:1947.
+ * Vector icons sit inside the 85×85 plate (offsets = icon x/y − plate x/y).
  */
 export const BOT_ENGINE_CARDS: readonly BotEngineCard[] = [
   {
     id: 'duration',
-    title: 'Duration',
-    description: 'Define the duration of each trade.',
     icon: iconDuration,
     figmaNodeId: '488:89',
-    iconWidth: 51,
-    iconHeight: 74,
-    iconOffsetX: 17,
-    iconOffsetY: 6,
-  },
-  {
-    id: 'market-type',
-    title: 'Market Type',
-    description: 'Choose the market you want to trade.',
-    icon: iconMarketType,
-    figmaNodeId: '55:172',
-    iconWidth: 70,
-    iconHeight: 69,
-    iconOffsetX: 8,
-    iconOffsetY: 8,
-  },
-  {
-    id: 'trading-pair',
-    title: 'Trading Pair',
-    description: 'Select the trading pair that fits your strategy.',
-    icon: iconTradingPair,
-    figmaNodeId: '488:17',
-    iconWidth: 77,
-    iconHeight: 50,
-    iconOffsetX: 4,
-    iconOffsetY: 18,
-  },
-  {
-    id: 'daily-profit-target',
-    title: 'Daily Profit Target',
-    description: 'Set your daily profit target percentage.',
-    icon: iconDailyProfit,
-    figmaNodeId: '488:97',
-    iconWidth: 74,
+    iconWidth: 65,
     iconHeight: 65,
-    iconOffsetX: 6,
+    iconOffsetX: 10,
     iconOffsetY: 10,
   },
   {
-    id: 'daily-loss-limit',
-    title: 'Daily Loss Limit',
-    description: 'Set your maximum daily loss limit.',
-    icon: iconDailyLoss,
-    figmaNodeId: '488:105',
-    iconWidth: 61,
-    iconHeight: 67,
-    iconOffsetX: 12,
-    iconOffsetY: 9,
+    id: 'market-type',
+    icon: iconMarketType,
+    figmaNodeId: '55:172',
+    iconWidth: 59,
+    iconHeight: 66,
+    iconOffsetX: 13,
+    iconOffsetY: 10,
   },
   {
-    id: 'technical-indicator',
-    title: 'Technical Indicator',
-    description: 'Pick the indicator that guides your signals.',
-    icon: iconTechnicalIndicator,
-    figmaNodeId: '488:25',
-    iconWidth: 66,
-    iconHeight: 68,
+    id: 'trading-pair',
+    icon: iconTradingPair,
+    figmaNodeId: '488:17',
+    iconWidth: 65,
+    iconHeight: 65,
+    iconOffsetX: 10,
+    iconOffsetY: 10,
+  },
+  {
+    id: 'daily-profit-target',
+    icon: iconDailyProfit,
+    figmaNodeId: '488:97',
+    iconWidth: 65,
+    iconHeight: 65,
     iconOffsetX: 10,
     iconOffsetY: 9,
   },
   {
+    id: 'daily-loss-limit',
+    icon: iconDailyLoss,
+    figmaNodeId: '488:105',
+    iconWidth: 67,
+    iconHeight: 40,
+    iconOffsetX: 9,
+    iconOffsetY: 23,
+  },
+  {
+    id: 'technical-indicator',
+    icon: iconTechnicalIndicator,
+    figmaNodeId: '488:25',
+    iconWidth: 52,
+    iconHeight: 65,
+    iconOffsetX: 17,
+    iconOffsetY: 10,
+  },
+  {
     id: 'strategy',
-    title: 'Strategy',
-    description: 'Choose the strategy that matches your goals.',
     icon: iconStrategy,
     figmaNodeId: '488:33',
-    iconWidth: 51,
-    iconHeight: 78,
-    iconOffsetX: 17,
-    iconOffsetY: 3,
+    iconWidth: 65,
+    iconHeight: 65,
+    iconOffsetX: 10,
+    iconOffsetY: 10,
   },
   {
     id: 'signal-strength',
-    title: 'Signal Strength',
-    description: 'Adjust the minimum signal strength to consider.',
     icon: iconSignalStrength,
     figmaNodeId: '488:113',
-    iconWidth: 71,
-    iconHeight: 64,
-    iconOffsetX: 7,
-    iconOffsetY: 11,
+    iconWidth: 61,
+    iconHeight: 53,
+    iconOffsetX: 12,
+    iconOffsetY: 16,
   },
   {
     id: 'current-bot-status',
-    title: 'Current Bot Status',
-    description: 'Monitor the current status of your AI bot',
     icon: iconBotStatus,
     figmaNodeId: '488:121',
-    iconWidth: 71,
-    iconHeight: 72,
-    iconOffsetX: 7,
-    iconOffsetY: 7,
+    iconWidth: 65,
+    iconHeight: 65,
+    iconOffsetX: 10,
+    iconOffsetY: 10,
   },
 ] as const;

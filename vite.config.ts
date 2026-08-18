@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/landing/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
@@ -25,6 +26,12 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
+    allowedHosts: ['.scaralphaai.com', 'scaralphaai.com'],
+  },
+  preview: {
+    host: true,
+    port: 3004,
+    allowedHosts: ['.scaralphaai.com', 'scaralphaai.com'],
   },
   build: {
     target: 'es2020',
