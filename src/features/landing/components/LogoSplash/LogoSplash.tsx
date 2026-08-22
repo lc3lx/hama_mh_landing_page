@@ -58,7 +58,7 @@ export function LogoSplash({ onFinished }: LogoSplashProps) {
         <div className={styles.wobble}>
           <svg
             className={styles.logo}
-            viewBox="-10 -16 162 93"
+            viewBox="-24 -28 449 178"
             role="img"
             aria-label={t.header.logoAlt}
           >
@@ -103,8 +103,8 @@ export function LogoSplash({ onFinished }: LogoSplashProps) {
             </defs>
             <image
               href={scarAlphaLogo}
-              width="142"
-              height="61"
+              width="401"
+              height="122"
               filter={`url(#${WAVE_FILTER_ID})`}
             />
           </svg>

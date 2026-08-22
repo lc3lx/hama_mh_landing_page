@@ -252,8 +252,8 @@ export const ar: Messages = {
     disclaimerBefore: 'بالاشتراك، فإنك توافق على ',
     disclaimerLinkLabel: 'سياسة الخصوصية',
     disclaimerAfter: ' وتوافق على تلقي التحديثات من شركتنا.',
-    copyrightBefore: '© 2026 سكار ألفا AI. تطوير ',
-    copyrightCompany: 'Hul Company',
+    copyrightBefore: '© 2026 سكار ألفا AI',
+    copyrightCompany: '',
     logoAlt: 'سكار ألفا AI',
     groups: {
       general: {
@@ -276,8 +276,9 @@ export const ar: Messages = {
       'follow-us': {
         title: 'تابعنا',
         links: {
+          tiktok: 'تيك توك',
           instagram: 'إنستغرام',
-          linkedin: 'لينكدإن',
+          telegram: 'تيليجرام',
         },
       },
     },

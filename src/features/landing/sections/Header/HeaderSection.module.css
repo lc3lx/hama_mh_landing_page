@@ -22,9 +22,10 @@
 
 .logo {
   display: block;
-  width: clamp(7.5rem, 6.5rem + 2vw, 8.875rem); /* 120 → 142px */
+  width: clamp(10rem, 9rem + 2.5vw, 12.5rem); /* ~160 → 200px — wider transparent PNG */
   height: auto;
-  aspect-ratio: 142 / 61;
+  aspect-ratio: 401 / 122;
+  object-fit: contain;
 }
 
 .nav {
@@ -188,6 +189,6 @@
   }
 
   .logo {
-    width: 7.25rem;
+    width: 10rem;
   }
 }

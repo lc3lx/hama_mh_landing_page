@@ -20,26 +20,25 @@ export const FOOTER_COPY = {
   disclaimerBefore: 'By subscribing, you agree to our ',
   disclaimerLinkLabel: 'Privacy Policy',
   disclaimerAfter: ' and provide consent to receive updates from our company.',
-  copyrightBefore: '© 2026 Scar Alpha AI. developed by ',
-  copyrightCompany: 'Hul Company',
+  copyrightBefore: '© 2026 Scar Alpha AI',
+  copyrightCompany: '',
   logoAlt: 'Scar Alpha AI',
 } as const;
 
-/** Developer credit — opens HUL Arabic site */
-export const FOOTER_COMPANY_HREF = 'https://hul-co.com/';
+export const FOOTER_COMPANY_HREF = '#';
 
 
 /** Reuses Header logo asset — Figma footer mark 491:1579 matches Header 56:8085 brand. */
 export const FOOTER_LOGO = {
   src: scarAlphaLogo,
-  width: 142,
-  height: 61,
+  width: 401,
+  height: 122,
   figmaNodeId: '491:1579',
 } as const;
 
 /**
  * Footer nav — General / Additional / Follow Us (Figma 385:1448).
- * Legal + social destinations are placeholders until product URLs exist.
+ * Legal destinations are placeholders; social links point at Scar Alpha AI channels.
  */
 export const FOOTER_NAV_GROUPS: readonly FooterNavGroup[] = [
   {
@@ -97,15 +96,21 @@ export const FOOTER_NAV_GROUPS: readonly FooterNavGroup[] = [
     figmaNodeId: '385:1462',
     links: [
       {
-        id: 'instagram',
-        label: 'Instagram',
-        href: 'https://www.instagram.com/',
+        id: 'tiktok',
+        label: 'TikTok',
+        href: 'https://www.tiktok.com/@scaralphaai',
         external: true,
       },
       {
-        id: 'linkedin',
-        label: 'LinkedIn',
-        href: 'https://www.linkedin.com/',
+        id: 'instagram',
+        label: 'Instagram',
+        href: 'https://www.instagram.com/scaralphaai',
+        external: true,
+      },
+      {
+        id: 'telegram',
+        label: 'Telegram',
+        href: 'https://t.me/ScarAlphaAi',
         external: true,
       },
     ],

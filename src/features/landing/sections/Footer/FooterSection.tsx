@@ -105,14 +105,16 @@ export function FooterSection() {
 
           <p className={styles.copyright} data-figma-node="55:514">
             {t.footer.copyrightBefore}
-            <a
-              className={styles.companyLink}
-              href={FOOTER_COMPANY_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t.footer.copyrightCompany}
-            </a>
+            {t.footer.copyrightCompany ? (
+              <a
+                className={styles.companyLink}
+                href={FOOTER_COMPANY_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.footer.copyrightCompany}
+              </a>
+            ) : null}
           </p>
         </div>
       </div>

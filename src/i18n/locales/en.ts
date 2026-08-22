@@ -252,8 +252,8 @@ export const en: Messages = {
     disclaimerBefore: 'By subscribing, you agree to our ',
     disclaimerLinkLabel: 'Privacy Policy',
     disclaimerAfter: ' and provide consent to receive updates from our company.',
-    copyrightBefore: '© 2026 Scar Alpha AI. developed by ',
-    copyrightCompany: 'Hul Company',
+    copyrightBefore: '© 2026 Scar Alpha AI',
+    copyrightCompany: '',
     logoAlt: 'Scar Alpha AI',
     groups: {
       general: {
@@ -276,8 +276,9 @@ export const en: Messages = {
       'follow-us': {
         title: 'Follow Us',
         links: {
+          tiktok: 'TikTok',
           instagram: 'Instagram',
-          linkedin: 'LinkedIn',
+          telegram: 'Telegram',
         },
       },
     },

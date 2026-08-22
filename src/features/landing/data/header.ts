@@ -1,4 +1,4 @@
-import logoUrl from '@assets/logos/scar-alpha-logo.svg';
+import logoUrl from '@assets/logos/scar-alpha-logo.png';
 import { registerAsset } from '@assets';
 
 registerAsset({
@@ -6,10 +6,10 @@ registerAsset({
   kind: 'logo',
   src: logoUrl,
   alt: 'Scar Alpha AI',
-  format: 'svg',
+  format: 'png',
   figmaNodeId: '56:8085',
-  width: 142,
-  height: 61,
+  width: 401,
+  height: 122,
 });
 
 export { logoUrl as scarAlphaLogo };

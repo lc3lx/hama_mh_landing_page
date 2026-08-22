@@ -94,9 +94,10 @@
 
 .logo {
   display: block;
-  width: 8.875rem; /* 142px */
-  height: 3.8125rem; /* 61px — matches Header export; Figma leaf 60.46 */
-  aspect-ratio: 142 / 61;
+  width: 12.5rem; /* ~200px — matches Header max; keeps ~61px height */
+  height: auto;
+  aspect-ratio: 401 / 122;
+  object-fit: contain;
 }
 
 .disclaimer {

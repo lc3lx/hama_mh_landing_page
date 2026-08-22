@@ -30,8 +30,8 @@ export function HeaderSection() {
             className={styles.logo}
             src={scarAlphaLogo}
             alt={t.header.logoAlt}
-            width={142}
-            height={61}
+            width={401}
+            height={122}
             decoding="async"
           />
         </a>
