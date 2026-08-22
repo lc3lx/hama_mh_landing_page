@@ -6,14 +6,13 @@ import styles from './LogoSplash.module.css';
 
 const HOLD_MS = 2600;
 const EXIT_MS = 780;
-const WAVE_FILTER_ID = 'scar-alpha-logo-wave';
 
 export interface LogoSplashProps {
   onFinished: () => void;
 }
 
 /**
- * Full-viewport intro: oversized brand mark with a jelly / wave motion, then fade out.
+ * Full-viewport intro: static brand mark with a soft glow behind it, then fade out.
  */
 export function LogoSplash({ onFinished }: LogoSplashProps) {
   const { t } = useI18n();
@@ -52,63 +51,17 @@ export function LogoSplash({ onFinished }: LogoSplashProps) {
       aria-hidden={phase === 'exit'}
     >
       <div className={styles.vignette} />
-      <div className={styles.glow} />
 
       <div className={styles.stage}>
-        <div className={styles.wobble}>
-          <svg
-            className={styles.logo}
-            viewBox="-24 -28 449 178"
-            role="img"
-            aria-label={t.header.logoAlt}
-          >
-            <defs>
-              <filter
-                id={WAVE_FILTER_ID}
-                x="-18%"
-                y="-40%"
-                width="136%"
-                height="180%"
-                filterUnits="objectBoundingBox"
-              >
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.018 0.04"
-                  numOctaves="2"
-                  seed="3"
-                  result="noise"
-                >
-                  <animate
-                    attributeName="baseFrequency"
-                    dur="1.7s"
-                    values="0.012 0.028;0.028 0.055;0.012 0.028"
-                    repeatCount="indefinite"
-                  />
-                </feTurbulence>
-                <feDisplacementMap
-                  in="SourceGraphic"
-                  in2="noise"
-                  scale="14"
-                  xChannelSelector="R"
-                  yChannelSelector="G"
-                >
-                  <animate
-                    attributeName="scale"
-                    dur="1.7s"
-                    values="6;16;8;14;6"
-                    repeatCount="indefinite"
-                  />
-                </feDisplacementMap>
-              </filter>
-            </defs>
-            <image
-              href={scarAlphaLogo}
-              width="401"
-              height="122"
-              filter={`url(#${WAVE_FILTER_ID})`}
-            />
-          </svg>
-        </div>
+        <div className={styles.glow} aria-hidden="true" />
+        <svg
+          className={styles.logo}
+          viewBox="-24 -28 449 178"
+          role="img"
+          aria-label={t.header.logoAlt}
+        >
+          <image href={scarAlphaLogo} width="401" height="122" />
+        </svg>
       </div>
     </div>
   );
